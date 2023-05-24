@@ -1,7 +1,7 @@
 /tmp/*
 .env
 /target/*
-tessdata/*
+**tessdata**
 *.log
 config.properties
 compliments.txt
