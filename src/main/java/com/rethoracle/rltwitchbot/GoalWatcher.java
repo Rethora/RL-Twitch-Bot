@@ -265,7 +265,7 @@ public class GoalWatcher extends Thread {
 							String compliment = complimentMessageList.get(0);
 							complimentMessageList.remove(0);
 							System.out.println("COMPLIMENT: " + compliment);
-//							tc.getChat().sendMessage(cn, compliment);
+							tc.getChat().sendMessage(cn, compliment);
 						}
 						break;
 					case OPPONENT:
@@ -273,7 +273,7 @@ public class GoalWatcher extends Thread {
 							String roast = roastMessageList.get(0);
 							roastMessageList.remove(0);
 							System.out.println("ROAST: " + roast);
-//							tc.getChat().sendMessage(cn, roast);
+							tc.getChat().sendMessage(cn, roast);
 						}
 						break;
 					default:

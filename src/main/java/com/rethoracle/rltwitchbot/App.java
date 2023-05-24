@@ -50,25 +50,28 @@ public class App {
 			properties.load(propsInput);
 
 			String channelName = properties.getProperty("TWITCH_CHANNEL_NAME");
-//			String width = properties.getProperty("WINDOW_WIDTH");
-//			String height = properties.getProperty("WINDOW_HEIGHT");
+			// String width = properties.getProperty("WINDOW_WIDTH");
+			// String height = properties.getProperty("WINDOW_HEIGHT");
 
-//			WebDriverManager.firefoxdriver().setup();
-//			FirefoxOptions options = new FirefoxOptions();
-//			options.addArguments("--headless");
-//			options.addArguments(String.format("--width=%s", width));
-//			options.addArguments(String.format("--height=%s", height));
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxOptions options = new FirefoxOptions();
+			options.addArguments("--headless");
+			// options.addArguments(String.format("--width=%s", width));
+			// options.addArguments(String.format("--height=%s", height));
 
-//			WebDriver driver = new FirefoxDriver(options);
-			WebDriverManager wdm = WebDriverManager.firefoxdriver().browserInDocker().browserVersion("111.0");
-			WebDriver driver = wdm.create();
+			WebDriver driver = new FirefoxDriver(options);
+
+			// WebDriverManager wdm =
+			// WebDriverManager.firefoxdriver().browserInDocker().browserVersion("111.0");
+			// WebDriver driver = wdm.create();
 
 			// open video player
 			String url = String.format(
 					"https://player.twitch.tv/?channel=%s&muted=true&parent=twitch.tv&player=popout&quality=chunked",
 					channelName);
 			driver.get(url);
-//			driver.manage().window().fullscreen();
+			// driver.manage().window().maximize();
+			driver.manage().window().fullscreen();
 
 			// accept mature content warning
 			List<WebElement> buttons = driver.findElements(By.tagName("button"));
@@ -128,7 +131,7 @@ public class App {
 			// }
 
 			TwitchClient twitchClient = TwitchClientBuilder.builder()
-					.withDefaultAuthToken(new OAuth2Credential("twitch", System.getenv("TWITCH_OAUTH_TOKEN")))
+					.withChatAccount(new OAuth2Credential("twitch", System.getenv("TWITCH_OAUTH_TOKEN")))
 					.withEnableChat(true).build();
 			twitchClient.getChat().joinChannel(channelName);
 
