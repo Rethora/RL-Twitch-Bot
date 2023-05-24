@@ -1,0 +1,8 @@
+/tmp/*
+.env
+/target/*
+tessdata/*
+*.log
+config.properties
+compliments.txt
+roasts.txt

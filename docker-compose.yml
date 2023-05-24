@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  rltb:
+    image: rltb:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./config:/config:ro
+      - ./tmp/:/app/tmp
