@@ -5,7 +5,6 @@
 ### Prerequisites
 
 - Java version 17
-- Docker
 - Firefox
 - Twitch account
 
@@ -22,9 +21,6 @@
 #### Environment
 
 - Configure env variables
-  - If using Eclipse, set runtime variables
-  - If using VsCode, create launch.json
-  - If using Docker, create .env file
 
 #### Files
 
@@ -37,4 +33,3 @@
 ### Docker
 
 - WIP
-  - Need to figure out display issues
