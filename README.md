@@ -1,5 +1,19 @@
 # Rocket League Goal Watcher Twitch Bot
 
+## Abilities
+
+### Compliments
+
+Can compliment when you or your teammates score a goal.
+
+![video demo](./assets/compliment.mp4)
+
+### Roasts
+
+Can roast when you or your teammates get scored on.
+
+![video demo](./assets/roast.mp4)
+
 ## Development
 
 ### Prerequisites
