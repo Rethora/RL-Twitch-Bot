@@ -3,11 +3,8 @@ package com.rethoracle.rltwitchbot;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Properties;
 import java.util.Queue;
@@ -19,14 +16,12 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import com.github.twitch4j.TwitchClient;
 
 import me.xdrop.fuzzywuzzy.FuzzySearch;
-import me.xdrop.fuzzywuzzy.model.ExtractedResult;
 
 public class GoalWatcher extends Thread {
 	private Recognizer r;
@@ -101,14 +96,14 @@ public class GoalWatcher extends Thread {
 		File messageFile;
 
 		switch (messageType) {
-		case COMPLIMENT:
-			messageFile = new File(System.getenv("COMPLIMENTS_FILE_PATH"));
-			break;
-		case ROAST:
-			messageFile = new File(System.getenv("ROASTS_FILE_PATH"));
-			break;
-		default:
-			return messageList;
+			case COMPLIMENT:
+				messageFile = new File(System.getenv("COMPLIMENTS_FILE_PATH"));
+				break;
+			case ROAST:
+				messageFile = new File(System.getenv("ROASTS_FILE_PATH"));
+				break;
+			default:
+				return messageList;
 		}
 
 		try {
@@ -167,13 +162,6 @@ public class GoalWatcher extends Thread {
 	private boolean isRlNameInText(String rlName, String text) {
 		int weight = FuzzySearch.weightedRatio(rlName, text);
 
-//		System.out.println("Text " + text);
-//		System.out.println("Weight: " + weight);
-//		FuzzySearch.extractTop(rlName);
-//		remove scored text
-//		replace any non word char in rlname
-//		check LevenshteinDistance of ~90%
-//		text.split("\\W");
 		return weight >= 75;
 	}
 
@@ -228,7 +216,7 @@ public class GoalWatcher extends Thread {
 						LocalTime startTime = LocalTime.now();
 						LocalTime stopTime = startTime.plusSeconds(5);
 
-						// check text for the next 5 seconds
+						// * check text for the next 5 seconds
 						while (LocalTime.now().isBefore(stopTime)) {
 							if (!q.isEmpty()) {
 								try {
@@ -252,32 +240,32 @@ public class GoalWatcher extends Thread {
 					}
 
 					switch (scorer) {
-					case STREAMER:
-						if (shouldCompliment) {
-							String compliment = complimentMessageList.get(0);
-							complimentMessageList.remove(0);
-							System.out.println("COMPLIMENT: " + compliment);
-							tc.getChat().sendMessage(cn, compliment);
-						}
-						break;
-					case TEAMMATE:
-						if (shouldComplimentForTeammates) {
-							String compliment = complimentMessageList.get(0);
-							complimentMessageList.remove(0);
-							System.out.println("COMPLIMENT: " + compliment);
-							tc.getChat().sendMessage(cn, compliment);
-						}
-						break;
-					case OPPONENT:
-						if (shouldRoast) {
-							String roast = roastMessageList.get(0);
-							roastMessageList.remove(0);
-							System.out.println("ROAST: " + roast);
-							tc.getChat().sendMessage(cn, roast);
-						}
-						break;
-					default:
-						break;
+						case STREAMER:
+							if (shouldCompliment) {
+								String compliment = complimentMessageList.get(0);
+								complimentMessageList.remove(0);
+								System.out.println("COMPLIMENT: " + compliment);
+								// tc.getChat().sendMessage(cn, compliment);
+							}
+							break;
+						case TEAMMATE:
+							if (shouldComplimentForTeammates) {
+								String compliment = complimentMessageList.get(0);
+								System.out.println("COMPLIMENT: " + compliment);
+								complimentMessageList.remove(0);
+								// tc.getChat().sendMessage(cn, compliment);
+							}
+							break;
+						case OPPONENT:
+							if (shouldRoast) {
+								String roast = roastMessageList.get(0);
+								roastMessageList.remove(0);
+								System.out.println("ROAST: " + roast);
+								// tc.getChat().sendMessage(cn, roast);
+							}
+							break;
+						default:
+							break;
 					}
 
 					try {

@@ -44,14 +44,6 @@ public class Recognizer extends Tesseract {
 
 		BufferedImage subBuffer = bufferedScreenshot.getSubimage(0, goalTextY, driverWidth, goalTextHeight);
 
-		// TODO: remove
-		try {
-			File testOutputFile = new File("tmp/cropped.png");
-			ImageIO.write(subBuffer, "png", testOutputFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 		return subBuffer;
 	}
 
@@ -74,14 +66,6 @@ public class Recognizer extends Tesseract {
 						isGoalScoredText(color.getRed(), color.getGreen(), color.getBlue()) ? Color.BLACK.getRGB()
 								: Color.WHITE.getRGB());
 			}
-		}
-
-		// TODO: remove
-		try {
-			File testOutputFile = new File("tmp/binarized.png");
-			ImageIO.write(subBuffer, "png", testOutputFile);
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 
 		return subBuffer;

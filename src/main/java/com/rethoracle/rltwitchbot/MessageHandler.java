@@ -23,29 +23,29 @@ public class MessageHandler {
 		if (isCommand(message)) {
 			String command = getCommand(message).toLowerCase();
 			switch (command) {
-			case "leave":
-				leaveChannel(event);
-				break;
-			case "stop watching":
-				stopWatching(event);
-				break;
-			case "start watching":
-				startWatching(event);
-				break;
-			case "stop roasting":
-				stopRoasting(event);
-				break;
-			case "start roasting":
-				startRoasting(event);
-				break;
-			case "stop complimenting":
-				stopComplimenting(event);
-				break;
-			case "start complimenting":
-				startComplimenting(event);
-				break;
-			default:
-				break;
+				case "leave":
+					leaveChannel(event);
+					break;
+				case "stop watching":
+					stopWatching(event);
+					break;
+				case "start watching":
+					startWatching(event);
+					break;
+				case "stop roasting":
+					stopRoasting(event);
+					break;
+				case "start roasting":
+					startRoasting(event);
+					break;
+				case "stop complimenting":
+					stopComplimenting(event);
+					break;
+				case "start complimenting":
+					startComplimenting(event);
+					break;
+				default:
+					break;
 			}
 		}
 
