@@ -2,10 +2,7 @@ package com.rethoracle.rltwitchbot;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 
@@ -13,7 +10,10 @@ import net.sourceforge.tess4j.Tesseract;
 
 public class Recognizer extends Tesseract {
 
-	public Recognizer() {
+	private Properties props;
+
+	public Recognizer(Properties properties) {
+		props = properties;
 		initialize();
 	}
 
@@ -60,8 +60,7 @@ public class Recognizer extends Tesseract {
 	}
 
 	private boolean withinThreshold(int actual, int target) {
-		// TODO: tune
-		int threshold = 30;
+		int threshold = Integer.parseInt(props.getProperty("TEXT_COLOR_THRESHOLD"));
 		int low = target - threshold;
 		int high = target + threshold;
 		return actual >= low && actual <= high;
