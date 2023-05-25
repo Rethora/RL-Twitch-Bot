@@ -244,24 +244,24 @@ public class GoalWatcher extends Thread {
 							if (shouldCompliment) {
 								String compliment = complimentMessageList.get(0);
 								complimentMessageList.remove(0);
-								System.out.println("COMPLIMENT: " + compliment);
-								// tc.getChat().sendMessage(cn, compliment);
+								// System.out.println("COMPLIMENT: " + compliment);
+								tc.getChat().sendMessage(cn, compliment);
 							}
 							break;
 						case TEAMMATE:
 							if (shouldComplimentForTeammates) {
 								String compliment = complimentMessageList.get(0);
-								System.out.println("COMPLIMENT: " + compliment);
 								complimentMessageList.remove(0);
-								// tc.getChat().sendMessage(cn, compliment);
+								// System.out.println("COMPLIMENT: " + compliment);
+								tc.getChat().sendMessage(cn, compliment);
 							}
 							break;
 						case OPPONENT:
 							if (shouldRoast) {
 								String roast = roastMessageList.get(0);
 								roastMessageList.remove(0);
-								System.out.println("ROAST: " + roast);
-								// tc.getChat().sendMessage(cn, roast);
+								// System.out.println("ROAST: " + roast);
+								tc.getChat().sendMessage(cn, roast);
 							}
 							break;
 						default:
