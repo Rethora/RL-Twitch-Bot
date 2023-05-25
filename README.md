@@ -1,5 +1,15 @@
 # Rocket League Goal Watcher Twitch Bot
 
+## Capabilites
+
+### Compliments
+
+https://github.com/Rethora/RL-Twitch-Bot/assets/75864249/fad33219-2725-4318-9f10-3fc27d79ef81
+
+### Roasts
+
+https://github.com/Rethora/RL-Twitch-Bot/assets/75864249/2c6b10a4-b161-4bc1-a7aa-d65f1f2ce2ab
+
 ## Development
 
 ### Prerequisites
